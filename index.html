@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--
+        Institution: University of Technology, Jamaica
+        CIT2011 Web Programming Group Assignment
+        Project: Spanish Town High School Portal
+
+        Group Member Information:
+        Student 1: Obrien Rose | 2509101 | Tuesday 03:00 PM - 05:00 PM
+        Student 2: Soyibo Grant | 2301323 | Tuesday 03:00 PM - 05:00 PM
+        Student 3: Colissa Gentles | 2501993 | Tuesday 03:00 PM - 05:00 PM
+        Student 4: Alex Fairman | 2508755 | Tuesday 03:00 PM - 05:00 PM 
+    -->
+
+    <!-- Sets the character encoding and mobile viewport. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Describes the purpose of the homepage. -->
+    <meta name="description" content="Welcome to the Spanish Town High School Portal.">
+
+    <!-- Sets the browser tab title. -->
+    <title>Home | Spanish Town High School</title>
+
+    <!-- Uses the school crest in the browser tab. -->
+    <link rel="icon" type="image/png" href="assets/Spanish%20Town%20High%20School%20Logo.png">
+
+    <!-- Connects the shared stylesheet. -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Loads the shared JavaScript after the HTML is parsed. -->
+    <script src="js/main.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Provides a skip link for keyboard users. -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Main website header and navigation. -->
+    <header class="site-header">
+        <div class="container header-container">
+
+            <!-- School identity and branding. -->
+            <a href="index.html" class="brand" aria-label="Spanish Town High School homepage">
+                <img class="brand-mark" src="assets/Spanish Town High School Logo.png" alt="Spanish Town High School crest">
+                <span class="brand-text">
+                    <strong>Spanish Town High School</strong>
+                    <small>School Portal</small>
+                </span>
+            </a>
+
+            <!-- Controls the navigation menu on smaller screens. -->
+            <button class="menu-toggle"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="primary-navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Main navigation links. -->
+            <nav class="main-navigation" id="primary-navigation" aria-label="Main navigation">
+                <a href="index.html" class="nav-link active" aria-current="page">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+                <a href="login.html" class="nav-button">Portal Access</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- Main content of the homepage. -->
+    <main id="main-content">
+
+        <!-- Homepage welcome section. -->
+        <section class="hero-section">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    
+
+                    <h1> <span>Spanish Town High School</span></h1>
+
+                    <p>
+                        A digital gateway for students, teachers, parents
+                        and members of the Spanish Town High School community.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="about.html" class="button button-primary">
+                            Discover Our School
+                        </a>
+
+                        <a href="login.html" class="button button-outline">
+                            Access Portal
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <small class="hero-photo-credit">
+                Photo: <a href="assets/Image of Spanish Town High School.png" target="_blank" rel="noopener noreferrer">Spanish Town High School</a>
+            </small>
+        </section>
+
+        <!-- Displays the school's location. -->
+        <section class="location-strip">
+            <div class="container location-content">
+                <span class="location-icon" aria-hidden="true">◉</span>
+                <p>
+                    Location: Corner of Young & Ellis Streets, Spanish Town P.O.,
+                    St. Catherine, Jamaica.
+                </p>
+            </div>
+        </section>
+
+        <!-- Gives visitors one way to enter the school portal. -->
+        <section class="portal-access-section" id="portal-access">
+            <div class="container portal-access-content">
+                <h2>Access Your School Portal</h2>
+                <p>
+                    Find important school information and access the services provided through the portal.
+                </p>
+
+                <div class="portal-login-box">
+                    <a href="login.html" class="portal-login-link">
+                        Continue To Login <span aria-hidden="true">⇰</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Shared website footer. -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+
+            <div>
+                <h2>Spanish Town High School</h2>
+                <p>School Portal</p>
+                <p class="footer-address">
+                    Corner of Young & Ellis Streets,<br>
+                    Spanish Town P.O., St. Catherine, Jamaica.
+                </p>
+            </div>
+
+            <div>
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>
+                    &copy; <span id="current-year">2026</span>
+                    Spanish Town High School Portal.
+                    CIT2011 Group Project.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

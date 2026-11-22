@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <!--
+        Institution: University of Technology, Jamaica
+        CIT2011 Web Programming Group Assignment
+        Project: Spanish Town High School Portal
+
+        Group Member Information:
+        Student 1: Obrien Rose | 2509101 | Tuesday 03:00 PM - 05:00 PM
+        Student 2: Soyibo Grant | 2301323 | Tuesday 03:00 PM - 05:00 PM
+        Student 3: Colissa Gentles | 2501993 | Tuesday 03:00 PM - 05:00 PM
+        Student 4: Alex Fairman | 2508755 | Tuesday 03:00 PM - 05:00 PM 
+    -->
+
+    <!-- Sets the character encoding. -->
+    <meta charset="UTF-8">
+
+    <!-- Supports responsive page dimensions. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Describes the contact page. -->
+    <meta name="description" content="Contact Spanish Town High School.">
+
+    <title>Contact Us | Spanish Town High School</title>
+
+    <!-- Uses the school crest in the browser tab. -->
+    <link rel="icon" type="image/png" href="assets/Spanish%20Town%20High%20School%20Logo.png">
+
+    <!-- Loads the shared stylesheet. -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Loads the shared JavaScript file. -->
+    <script src="js/main.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Skip navigation link for accessibility. -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Shared website header. -->
+    <header class="site-header">
+        <div class="container header-container">
+
+            <a href="index.html" class="brand">
+                <img class="brand-mark" src="assets/Spanish Town High School Logo.png" alt="Spanish Town High School crest">
+                <span class="brand-text">
+                    <strong>Spanish Town High School</strong>
+                    <small>School Portal</small>
+                </span>
+            </a>
+
+            <!-- Mobile menu control. -->
+            <button class="menu-toggle"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="primary-navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Main navigation links. -->
+            <nav class="main-navigation" id="primary-navigation" aria-label="Main navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="contact.html" class="nav-link active" aria-current="page">Contact Us</a>
+                <a href="login.html" class="nav-button">Portal Access</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- Main contact page content. -->
+    <main id="main-content">
+
+        <!-- Message enquiry form. -->
+        <section class="section-padding">
+            <div class="container contact-grid">
+
+                <!-- Custom message form. -->
+                <div class="contact-form-panel">
+
+                    <h2>Message Enquiry Form</h2>
+
+                    <p>
+                        Complete the fields below. Required
+                        information must be supplied before submission.
+                    </p>
+                    <form id="contact-form">
+
+                        <!-- Collects the sender's full name. -->
+                        <div class="form-group">
+                            <label for="full-name">Full Name</label>
+
+                            <input
+                                type="text"
+                                id="full-name"
+                                name="fullName"
+                                placeholder="Enter your full name"
+                                minlength="3"
+                                maxlength="80"
+                                pattern="[\p{L}][\p{L} .\x27\x2D]{2,79}"
+                                title="Enter a valid name using letters and normal name punctuation."
+                                autocomplete="name"
+                                required>
+                        </div>
+
+                        <!-- Collects and validates the sender's email. -->
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="example@email.com"
+                                maxlength="120"
+                                autocomplete="email"
+                                required>
+                        </div>
+
+                        <!-- Allows the sender to select an enquiry category. -->
+                        <div class="form-group">
+                            <label for="subject">Enquiry Subject</label>
+
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="General Enquiry">General Enquiry</option>
+                                <option value="Admissions">Admissions</option>
+                                <option value="Academics">Academics</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Collects the sender's message. -->
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="6"
+                                minlength="10"
+                                maxlength="1000"
+                                placeholder="Enter your message here..."
+                                required></textarea>
+                        </div>
+
+                        <!-- Submits the validated form. -->
+                        <button type="submit" class="button button-primary button-full">
+                            Submit Message
+                        </button>
+
+                        <!-- Displays the JavaScript submission result. -->
+                        <p id="form-feedback"
+                           class="form-feedback"
+                           role="status"
+                           aria-live="polite">
+                        </p>
+
+                    </form>
+
+                </div>
+
+                <aside class="contact-details" aria-labelledby="contact-details-heading">
+                    <h2 id="contact-details-heading">School Contact Details</h2>
+                    <p>
+                        <strong>Address</strong><br>
+                        Corner of Young and Ellis Streets, Spanish Town, St. Catherine, Jamaica
+                    </p>
+                    <p>
+                        <strong>Telephone</strong><br>
+                        <a href="tel:+18762135089">876-213-5089</a>
+                    </p>
+                    <p>
+                        <strong>Email</strong><br>
+                        <a href="mailto:spanishtownhigh@yahoo.com">spanishtownhigh@yahoo.com</a>
+                    </p>
+                </aside>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Shared website footer. -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+
+            <div>
+                <h2>Spanish Town High School</h2>
+                <p>School Portal</p>
+                <p class="footer-address">
+                    Corner of Young and Ellis Streets,<br>
+                    Spanish Town, St. Catherine, Jamaica.
+                </p>
+            </div>
+
+            <div>
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>
+                    &copy; <span id="current-year">2026</span>
+                    Spanish Town High School Portal.
+                    CIT2011 Group Project.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

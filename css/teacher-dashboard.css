@@ -1,0 +1,233 @@
+/*
+    Institution: University of Technology, Jamaica
+    CIT2011 Web Programming Group Assignment
+    Project: Spanish Town High School Portal
+    Username: teacher | Password: teacher123
+
+    Group Member Information:
+    Student 1: Obrien Rose | 2509101 | Tuesday 03:00 PM - 05:00 PM
+    Student 2: Soyibo Grant | 2301323 | Tuesday 03:00 PM - 05:00 PM
+    Student 3: Colissa Gentles | 2501993 | Tuesday 03:00 PM - 05:00 PM
+    Student 4: Alex Fairman | 2508755 | Tuesday 03:00 PM - 05:00 PM
+*/
+
+/* This page uses the shared styles from style.css and admin-dashboard.css. */
+
+/* This adds space around the teacher dashboard. */
+.teacher-main {
+    padding-block: 32px 60px;
+}
+
+/* This styles the main heading inside each teacher tab. */
+.teacher-panel h1 {
+    margin-bottom: 18px;
+    color: var(--primary-dark);
+    font-size: clamp(24px, 4vw, 32px);
+}
+
+/* This keeps the selected tab easy to see. */
+.teacher-tab.is-active {
+    background: var(--primary-colour);
+    color: var(--white);
+}
+
+/* These cards show the class totals. */
+.stats {
+    margin-bottom: 26px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.statBox {
+    min-height: 120px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid var(--border-colour);
+    border-left: 5px solid var(--primary-colour);
+    border-radius: var(--medium-radius);
+    background: var(--white);
+}
+
+.statBox h2 {
+    margin-bottom: 8px;
+    color: var(--primary-dark);
+    font-size: 16px;
+}
+
+.statBox p {
+    color: var(--primary-dark);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* This keeps the grade and report cards consistent with the registry. */
+.teacher-card {
+    margin-bottom: 22px;
+}
+
+.teacher-card h2 {
+    margin-bottom: 8px;
+    color: var(--primary-dark);
+}
+
+.teacher-intro {
+    margin-bottom: 20px;
+    color: var(--muted-colour);
+}
+
+/* This lines up the cohort, grade, subject and load steps. */
+.teacher-controls {
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+    align-items: end;
+    gap: 18px;
+}
+
+.teacher-controls .form-group,
+.teacher-report-controls .form-group {
+    margin-top: 0;
+}
+
+.teacher-controls button,
+.teacher-report-controls button {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.teacher-controls select:disabled,
+.teacher-controls button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* This lets the student score table scroll on narrow screens. */
+.teacher-table-wrapper {
+    margin-bottom: 18px;
+    border-color: var(--border-colour);
+    border-radius: var(--small-radius);
+}
+
+.teacher-table {
+    min-width: 560px;
+}
+
+.teacher-table caption {
+    padding: 12px 16px;
+    color: var(--primary-dark);
+    font-weight: 700;
+    text-align: left;
+}
+
+.teacher-table td {
+    border-bottom: 1px solid var(--border-colour);
+}
+
+.teacher-table tbody tr:nth-child(even) {
+    background: var(--background-colour);
+}
+
+.teacher-grade-input {
+    width: 110px;
+    padding: 8px 10px;
+    border: 1px solid var(--border-colour);
+    border-radius: var(--small-radius);
+}
+
+.teacher-actions {
+    margin-top: 0;
+}
+
+/* This lays out the report card search fields. */
+.teacher-report-controls {
+    max-width: 680px;
+    margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: minmax(0, 420px) auto;
+    align-items: end;
+    gap: 18px;
+}
+
+.teacher-report-output {
+    min-height: 110px;
+    padding: 20px;
+    border: 1px solid var(--border-colour);
+    border-left: 5px solid var(--primary-colour);
+    border-radius: var(--small-radius);
+    background: var(--white);
+}
+
+.teacher-report-output h3 {
+    margin: 8px 0 14px;
+    color: var(--primary-dark);
+}
+
+.teacher-report-output p {
+    margin-bottom: 8px;
+}
+
+.teacher-report-table {
+    margin-block: 16px;
+}
+
+.report-placeholder {
+    color: var(--muted-colour);
+}
+
+/* This shows a message after an action or validation error. */
+.teacher-message {
+    margin-top: 18px;
+    padding: 12px 15px;
+    border-left: 5px solid var(--accent-colour);
+    background: var(--primary-light);
+    color: var(--primary-dark);
+}
+
+.teacher-message:empty {
+    display: none;
+}
+
+.teacher-message.is-error {
+    border-left-color: var(--error-colour);
+    color: var(--error-colour);
+}
+
+/* This stacks the dashboard sections on tablets and phones. */
+@media (max-width: 680px) {
+    .teacher-main {
+        padding-block: 24px 44px;
+    }
+
+    .teacher-tabs .admin-tab {
+        flex: 1 1 40%;
+        padding-inline: 14px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .statBox {
+        min-height: 96px;
+    }
+
+    .teacher-controls,
+    .teacher-report-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .teacher-controls button,
+    .teacher-report-controls button,
+    .teacher-actions button {
+        width: 100%;
+    }
+
+    .teacher-report-output {
+        padding: 16px;
+    }
+}

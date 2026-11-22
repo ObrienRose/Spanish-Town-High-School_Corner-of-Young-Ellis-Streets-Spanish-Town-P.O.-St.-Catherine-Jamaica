@@ -1,0 +1,1103 @@
+/*
+    Institution: University of Technology, Jamaica
+    CIT2011 Web Programming Group Assignment
+    Project: Spanish Town High School Portal
+
+    Group Member Information:
+    Student 1: Obrien Rose | 2509101 | Tuesday 03:00 PM - 05:00 PM
+    Student 2: Soyibo Grant | 2301323 | Tuesday 03:00 PM - 05:00 PM
+    Student 3: Colissa Gentles | 2501993 | Tuesday 03:00 PM - 05:00 PM
+    Student 4: Alex Fairman | 2508755 | Tuesday 03:00 PM - 05:00 PM
+*/
+
+/* 1. SCHOOL COLOURS */
+
+:root {
+    --primary-colour: #730404;
+    --primary-dark: #4d0000;
+    --primary-light: #faeaea;
+    --accent-colour: #d89d26;
+
+    --white: #ffffff;
+    --background-colour: #fcf7f7;
+    --text-colour: #263746;
+    --muted-colour: #0e0e0e;
+    --border-colour: #000000;
+
+    --success-colour: #247a4a;
+    --error-colour: #b42318;
+
+    --font-main: Arial, Helvetica, sans-serif;
+    --container-width: 1160px;
+    --section-space: 80px;
+
+    --small-radius: 6px;
+    --medium-radius: 12px;
+    --shadow: 0 8px 28px rgba(82, 19, 19, 0.08);
+}
+
+
+/* 2. GENERAL PAGE STYLES */
+
+/* This keeps element sizes easier to work out. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* This sets scrolling and space below the sticky header. */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+/* This sets the main font, text colour, and page background. */
+body {
+    min-width: 320px;
+    background: var(--white);
+    color: var(--text-colour);
+    font-family: var(--font-main);
+    line-height: 1.7;
+}
+
+/* This keeps images inside their parent element. */
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* This removes the default underline from links. */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* This keeps form controls using the same font as the page. */
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+/* This shows which link or form field has keyboard focus. */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid var(--accent-colour);
+    outline-offset: 3px;
+}
+
+
+/* 3. SHARED PAGE LAYOUT */
+
+/* This centers content and stops it getting too wide. */
+.container {
+    width: min(92%, var(--container-width));
+    margin-inline: auto;
+}
+
+/* This adds space above and below page sections. */
+.section-padding {
+    padding-block: var(--section-space);
+}
+
+/* This gives sections a little less space on tablets. */
+@media (max-width: 900px) {
+    :root {
+        --section-space: 60px;
+    }
+}
+
+/* This gives sections a little less space on phones. */
+@media (max-width: 680px) {
+    :root {
+        --section-space: 50px;
+    }
+}
+
+/* This keeps the skip link ready for keyboard users. */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 15px;
+    z-index: 1000;
+    padding: 12px 18px;
+    background: var(--primary-dark);
+    color: var(--white);
+}
+
+/* This brings the skip link onto the screen when selected. */
+.skip-link:focus {
+    top: 10px;
+}
+
+
+/* 4. HEADER AND NAVIGATION */
+
+/* This keeps the header at the top while the page scrolls. */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-colour);
+    background: var(--white);
+}
+
+/* This puts the logo, name, and links in one row. */
+.header-container {
+    min-height: 82px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+/* This places the crest beside the school name. */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* This sets the size of the crest in the header. */
+.brand-mark {
+    width: 58px;
+    height: 58px;
+    flex: 0 0 58px;
+    object-fit: contain;
+}
+
+/* This stacks the school name and portal label. */
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.4;
+}
+
+/* This styles the school name in the header. */
+.brand-text strong {
+    color: var(--primary-dark);
+    font-size: 15px;
+}
+
+/* This styles the small portal label. */
+.brand-text small {
+    color: var(--muted-colour);
+    font-size: 12px;
+}
+
+/* This puts the main page links in a row. */
+.main-navigation {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+/* This styles each navigation link. */
+.nav-link {
+    color: var(--text-colour);
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+/* This changes the colour of a hovered or selected page link. */
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-colour);
+}
+
+/* This lets the selected page link hold an underline. */
+.nav-link.active {
+    position: relative;
+}
+
+/* This draws the gold line below the selected page. */
+.nav-link.active::after {
+    position: absolute;
+    right: 0;
+    bottom: -10px;
+    left: 0;
+    height: 3px;
+    background: var(--accent-colour);
+    content: "";
+}
+
+/* This styles the portal link in the navigation. */
+.nav-button {
+    padding: 11px 20px;
+    border-radius: var(--small-radius);
+    background: var(--primary-colour);
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* This darkens the portal link when it is hovered. */
+.nav-button:hover {
+    background: var(--primary-dark);
+}
+
+/* This hides the phone menu button on larger screens. */
+.menu-toggle {
+    display: none;
+}
+
+/* This makes the navigation fit better on tablets. */
+@media (max-width: 900px) {
+    .main-navigation {
+        gap: 16px;
+    }
+}
+
+/* This changes the header into a menu on phones. */
+@media (max-width: 680px) {
+    .header-container {
+        min-height: 72px;
+    }
+
+    .brand-mark {
+        width: 46px;
+        height: 46px;
+        flex-basis: 46px;
+    }
+
+    .brand-text strong {
+        font-size: 13px;
+    }
+
+    .menu-toggle {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        border: 1px solid var(--border-colour);
+        border-radius: var(--small-radius);
+        background: var(--white);
+        cursor: pointer;
+    }
+
+    /* These lines make the phone menu symbol. */
+    .menu-toggle span {
+        width: 19px;
+        height: 2px;
+        background: var(--primary-dark);
+    }
+
+    /* This hides the links until the menu button is pressed. */
+    .main-navigation {
+        position: absolute;
+        top: 72px;
+        right: 0;
+        left: 0;
+        padding: 20px 4%;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+        border-bottom: 1px solid var(--border-colour);
+        background: var(--white);
+        box-shadow: var(--shadow);
+    }
+
+    /* JavaScript adds this class to show the phone menu. */
+    .main-navigation.is-open {
+        display: flex;
+    }
+
+    /* This removes the desktop underline from the phone menu. */
+    .nav-link.active::after {
+        display: none;
+    }
+
+    /* This centers the portal link in the phone menu. */
+    .nav-button {
+        text-align: center;
+    }
+}
+
+
+/* 5. BUTTONS */
+
+/* This sets the shared size and shape of the buttons. */
+.button {
+    min-height: 46px;
+    padding: 12px 22px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid transparent;
+    border-radius: var(--small-radius);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+/* This makes the main button maroon. */
+.button-primary {
+    background: var(--primary-colour);
+    color: var(--white);
+}
+
+/* This darkens the main button when hovered. */
+.button-primary:hover {
+    background: var(--accent-colour);
+}
+
+/* This gives the second homepage button an outline. */
+.button-outline {
+    border-color: var(--primary-colour);
+    background: transparent;
+    color: var(--primary-colour);
+}
+
+/* This adds a light background when the outline button is hovered. */
+.button-outline:hover {
+    background: var(--primary-light);
+}
+
+/* This makes a button use the full available width. */
+.button-full {
+    width: 100%;
+}
+
+/* 6. SECTION HEADINGS */
+
+/* This centers section titles and limits their width. */
+.section-heading {
+    max-width: 680px;
+    margin: 0 auto 38px;
+    text-align: center;
+}
+
+/* This sets the size and colour of section headings. */
+.section-heading h2 {
+    margin-bottom: 12px;
+    color: var(--primary-dark);
+    font-size: clamp(26px, 4vw, 36px);
+    line-height: 1.3;
+}
+
+/* This styles the short text below section headings. */
+.section-heading p {
+    color: var(--muted-colour);
+}
+
+
+/* 7. HOME PAGE */
+
+/* This puts the welcome text over the school photo. */
+.hero-section {
+    position: relative;
+    min-height: clamp(500px, 72vh, 760px);
+    padding-block: 85px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--primary-dark);
+    background-image:
+        linear-gradient(
+            #000000a4,
+            #000000a2
+        ),
+        url("../assets/Image%20of%20Spanish%20Town%20High%20School.png");
+    background-position: center;
+    background-size: cover;
+}
+
+/* This centers the welcome text and buttons. */
+.hero-grid {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* This keeps the welcome content inside the page. */
+.hero-content {
+    width: 100%;
+    max-width: 850px;
+    margin-inline: auto;
+    text-align: center;
+}
+
+/* This keeps the heading from running off the screen. */
+.hero-content h1 {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto 22px;
+    color: var(--white);
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.1;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* This puts the school name on its own centered line. */
+.hero-content h1 span {
+    display: block;
+    color: var(--accent-colour);
+}
+
+/* This styles the welcome message. */
+.hero-content > p {
+    max-width: 700px;
+    margin: 0 auto 28px;
+    color: var(--white);
+    font-size: 18px;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+}
+
+/* This puts the welcome buttons in a centered row. */
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+/* This keeps the second button readable over the photo. */
+.hero-section .button-outline {
+    border-color: var(--white);
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--primary-dark);
+}
+
+/* This shows the photo credit at the bottom of the welcome area. */
+.hero-photo-credit {
+    position: absolute;
+    right: 20px;
+    bottom: 14px;
+    z-index: 1;
+    color: var(--white);
+    font-size: 12px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* This underlines the photo credit link. */
+.hero-photo-credit a {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+/* This shows the school address below the welcome area. */
+.location-strip {
+    padding: 17px 0;
+    background: var(--primary-dark);
+    color: var(--white);
+}
+
+/* This centers the address and location symbol. */
+.location-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+}
+
+/* This highlights the location symbol. */
+.location-icon {
+    color: var(--accent-colour);
+    font-size: 24px;
+}
+
+/* This styles the homepage portal section. */
+.portal-access-section {
+    padding-block: 50px 65px;
+    background: var(--white);
+    color: var(--text-colour);
+    text-align: center;
+}
+
+/* This styles the portal heading. */
+.portal-access-content h2 {
+    margin-bottom: 10px;
+    color: var(--primary-dark);
+    font-size: clamp(27px, 4vw, 34px);
+}
+
+/* This limits and spaces the portal description. */
+.portal-access-content > p {
+    max-width: 820px;
+    margin: 0 auto 34px;
+    color: var(--muted-colour);
+}
+
+/* This centers the login link inside its outline. */
+.portal-login-box {
+    width: 80%;
+    min-height: 110px;
+    margin-inline: auto; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--primary-colour);
+    border-radius: 18px;
+}
+
+/* This styles the login link and arrow. */
+.portal-login-link {
+    min-height: 42px;
+    padding: 10px 15px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--accent-colour);
+    border-radius: var(--small-radius);
+    background: var(--accent-colour);
+    color: var(--muted-colour);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* This changes the login link background when hovered. */
+.portal-login-link:hover {
+    background: var(--primary-light);
+}
+
+/* This sets the arrow size. */
+.portal-login-link span {
+    font-size: 22px;
+    line-height: 1;
+}
+
+/* This adjusts the welcome heading on tablets. */
+@media (max-width: 900px) {
+    .hero-content h1 {
+        font-size: 42px;
+    }
+}
+
+/* This adjusts the homepage layout on phones. */
+@media (max-width: 680px) {
+    .hero-section {
+        min-height: clamp(480px, 78vh, 620px);
+        padding-block: 70px 80px;
+    }
+
+    .hero-content h1 {
+        font-size: 38px;
+    }
+
+    .hero-content > p,
+    .portal-access-content > p {
+        font-size: 15px;
+    }
+
+    .location-content {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .portal-access-section {
+        padding-block: 40px 50px;
+    }
+
+    .portal-login-box {
+        width: 100%;
+        min-height: 105px;
+    }
+}
+
+
+/* 8. ABOUT US PAGE */
+
+/* This makes the page title simple and left aligned. */
+.about-intro {
+    padding-block: 52px;
+    border-bottom: 4px solid var(--accent-colour);
+    background: var(--white);
+}
+
+/* This styles the main About Us title. */
+.about-intro h1 {
+    margin-bottom: 10px;
+    color: var(--primary-dark);
+    font-size: clamp(30px, 4vw, 42px);
+    line-height: 1.2;
+}
+
+/* This keeps the introduction text at a readable width. */
+.about-intro p {
+    max-width: 680px;
+    color: var(--muted-colour);
+    font-size: 16px;
+}
+
+/* This makes the section headings line up on the left. */
+.about-section-heading {
+    max-width: 760px;
+    margin: 0 0 28px;
+    text-align: left;
+}
+
+/* This keeps Mission and Vision in one simple column. */
+.about-values {
+    max-width: 850px;
+}
+
+/* This separates Mission and Vision with a thin line. */
+.about-value {
+    padding-block: 18px;
+    border-bottom: 1px solid var(--border-colour);
+}
+
+/* This styles the Mission and Vision headings. */
+.about-value h2 {
+    margin-bottom: 6px;
+    color: var(--primary-dark);
+    font-size: 21px;
+}
+
+/* This styles the Mission and Vision text. */
+.about-value p {
+    color: var(--muted-colour);
+}
+
+/* This gives the school address a light background. */
+.about-location-section {
+    background: var(--primary-colour);
+}
+
+.about-location-section .button-primary {
+    background: var(--white);
+    color: var(--primary-dark);
+}
+
+/* This changes the main button when hovered on the location section. */
+.about-location-section .button-primary:hover {
+    background: var(--accent-colour);
+    color: var(--white);      
+}
+
+/* This places the address and button on one line. */
+.about-location {
+    min-height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+/* This styles the School Location heading. */
+.about-location h2 {
+    margin-bottom: 5px;
+    color: var(--accent-colour);
+    font-size: 20px;
+}
+
+/* This removes extra space under the address. */
+.about-location p {
+    margin: 0;
+    color: var(--white);
+}
+
+/* This gives the history section a soft background. */
+.about-history-section {
+    background: var(--white);
+}
+
+/* This makes the history list a single vertical timeline. */
+.history-milestones {
+    margin: 0;
+    padding: 0 0 0 22px;
+    border-left: 6px solid var(--accent-colour);
+    list-style: none;
+}
+
+/* This spaces each milestone along the timeline. */
+.history-milestones li {
+    position: relative;
+    margin-bottom: 24px;
+    padding-left: 8px;
+}
+
+/* This removes space after the last milestone. */
+.history-milestones li:last-child {
+    margin-bottom: 0;
+}
+
+/* This styles each date and milestone name. */
+.history-milestones h3 {
+    margin-bottom: 5px;
+    color: var(--primary-dark);
+    font-size: 18px;
+}
+
+/* This styles each history description. */
+.history-milestones p {
+    color: var(--muted-colour);
+}
+
+/* This keeps the motto text in a readable column. */
+.motto-copy {
+    max-width: 760px;
+    padding-left: 16px;
+    border-left: 6px solid var(--accent-colour);
+}
+
+/* This styles the motto title. */
+.motto-copy h3 {
+    margin-bottom: 8px;
+    color: var(--primary-dark);
+}
+
+/* This styles the motto and crest details. */
+.motto-copy p {
+    margin-bottom: 12px;
+    color: var(--muted-colour);
+}
+
+/* This removes space after the last motto paragraph. */
+.motto-copy p:last-child {
+    margin-bottom: 0;
+}
+
+/* This keeps the department section white with a gold divider. */
+.about-departments-section {
+    border-top: 4px solid var(--accent-colour);
+    background: var(--white);
+}
+
+/* This lists departments in two columns. */
+.department-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 32px;
+}
+
+/* This separates the department rows. */
+.department-list article {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-colour);
+}
+
+/* This styles the department names. */
+.department-list h3 {
+    margin-bottom: 4px;
+    color: var(--primary-dark);
+    font-size: 17px;
+}
+
+/* This styles the department descriptions. */
+.department-list p {
+    margin: 0;
+    color: var(--muted-colour);
+    font-size: 14px;
+}
+
+/* This separates Sixth Form from the department list. */
+.sixth-form-details {
+    margin-top: 32px;
+    padding-top: 18px;
+    border-top: 3px solid var(--accent-colour);
+}
+
+/* This styles the Sixth Form heading. */
+.sixth-form-details h3 {
+    margin-bottom: 8px;
+    color: var(--primary-dark);
+}
+
+/* This spaces the Sixth Form text. */
+.sixth-form-details p {
+    margin-top: 10px;
+    color: var(--muted-colour);
+}
+
+/* This styles the headings above the staff tables. */
+.directory-subheading {
+    margin: 26px 0 10px;
+    color: var(--primary-colour);
+    font-size: 18px;
+}
+
+/* This lets a staff table scroll on a narrow screen. */
+.table-wrapper {
+    width: 100%;
+    margin-bottom: 22px;
+    overflow-x: auto;
+    border: 1px solid var(--border-colour);
+}
+
+/* This sets the staff table width and alignment. */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    text-align: left;
+}
+
+/* This spaces the staff table cells. */
+.data-table th,
+.data-table td {
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--border-colour);
+}
+
+/* This styles the table headings. */
+.data-table th {
+    background: var(--primary-colour);
+    color: var(--white);
+    font-size: 14px;
+}
+
+/* This styles the names and staff details. */
+.data-table td {
+    color: var(--muted-colour);
+    font-size: 14px;
+}
+
+/* This stacks About Us content on phones. */
+@media (max-width: 680px) {
+    .about-intro {
+        padding-block: 38px;
+    }
+
+    .about-location {
+        padding-block: 20px;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .history-milestones {
+        padding-left: 18px;
+    }
+
+    .history-milestones li::before {
+        left: -25px;
+    }
+
+    .department-list {
+        grid-template-columns: 1fr;
+    }
+
+    .data-table {
+        min-width: 480px;
+    }
+}
+
+
+/* 9. CONTACT US PAGE */
+
+/* This lets the message form use the full content width. */
+.contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(250px, 0.8fr);
+    gap: 26px;
+    align-items: start;
+}
+
+/* This styles the message form panel. */
+.contact-form-panel {
+    padding: 30px;
+    border: 1px solid var(--border-colour);
+    border-radius: var(--medium-radius);
+    background: var(--white);
+    box-shadow: var(--shadow);
+    color: var(--text-colour);
+}
+
+/* This shows the school's contact information beside the form. */
+.contact-details {
+    padding: 26px;
+    border-left: 5px solid var(--accent-colour);
+    border-radius: var(--medium-radius);
+    background: var(--primary-colour);
+}
+
+.contact-details h2 {
+    margin-bottom: 16px;
+    color: var(--white);
+}
+
+.contact-details p {
+    margin-bottom: 16px;
+    color: var(--white);
+
+}
+
+.contact-details p:last-child {
+    margin-bottom: 0;
+    color: var(--white);
+}
+
+.contact-details a {
+    color: var(--white);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* This adds space above each form field. */
+.form-group {
+    margin-top: 20px;
+}
+
+/* This styles the contact form title. */
+.contact-form-panel h2 {
+    margin-bottom: 15px;
+    color: var(--accent-colour);
+    font-size: clamp(26px, 4vw, 36px);
+    line-height: 1.3;
+}
+
+/* This styles the labels above the form fields. */
+.form-group label {
+    margin-bottom: 8px;
+    display: block;
+    color: var(--primary-dark);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* This styles the name, email, subject, and message fields. */
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid var(--border-colour);
+    border-radius: var(--small-radius);
+    background: var(--background-colour);
+    color: var(--text-colour);
+    font-size: 14px;
+}
+
+/* This sets the message box height. */
+.form-group textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+/* This highlights the field being edited. */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--primary-colour);
+    outline: 2px solid var(--primary-light);
+}
+
+/* This adds space above the submit button. */
+.contact-form-panel .button {
+    margin-top: 24px;
+}
+
+/* This styles the form response message. */
+.form-feedback {
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* This shows a successful form message in green. */
+.form-feedback.success {
+    color: var(--success-colour);
+}
+
+/* This shows a form error message in red. */
+.form-feedback.error {
+    color: var(--error-colour);
+}
+
+/* This gives the form a little more room on phones. */
+@media (max-width: 680px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form-panel {
+        padding: 22px;
+    }
+
+    .contact-details {
+        padding: 20px;
+    }
+}
+
+
+/* 10. FOOTER */
+
+/* This sets the footer background and text colour. */
+.site-footer {
+    background: var(--primary-dark);
+    color: var(--white);
+}
+
+/* This puts school details and quick links in columns. */
+.footer-grid {
+    padding-block: 55px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+}
+
+/* This styles the footer headings. */
+.footer-grid h2,
+.footer-grid h3 {
+    margin-bottom: 15px;
+    font-size: 17px;
+}
+
+/* This styles footer text and links. */
+.footer-grid p,
+.footer-grid a {
+    margin-bottom: 10px;
+    display: block;
+    color: #d5e0eb;
+    font-size: 14px;
+}
+
+/* This changes a quick link colour when hovered. */
+.footer-grid a:hover {
+    color: var(--accent-colour);
+}
+
+/* This separates the copyright line from the footer links. */
+.footer-bottom {
+    padding: 17px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    color: #d5e0eb;
+    font-size: 12px;
+}
+
+/* This keeps footer columns even on tablets. */
+@media (max-width: 900px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* This stacks footer sections on phones. */
+@media (max-width: 680px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+}
+
+
+/* 11. REDUCED MOTION */
+
+/* This reduces movement for visitors who prefer less animation. */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}

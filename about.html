@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <!--
+        Institution: University of Technology, Jamaica
+        CIT2011 Web Programming Group Assignment
+        Project: Spanish Town High School Portal
+
+        Group Member Information:
+        Student 1: Obrien Rose | 2509101 | Tuesday 03:00 PM - 05:00 PM
+        Student 2: Soyibo Grant | 2301323 | Tuesday 03:00 PM - 05:00 PM
+        Student 3: Colissa Gentles | 2501993 | Tuesday 03:00 PM - 05:00 PM
+        Student 4: Alex Fairman | 2508755 | Tuesday 03:00 PM - 05:00 PM
+    -->
+
+    <!-- Sets the character encoding and mobile viewport. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Describes the About Us page. -->
+    <meta name="description" content="Learn about Spanish Town High School.">
+
+    <title>About Us | Spanish Town High School</title>
+
+    <!-- Uses the school crest in the browser tab. -->
+    <link rel="icon" type="image/png" href="assets/Spanish%20Town%20High%20School%20Logo.png">
+
+    <!-- Loads the shared website stylesheet and JavaScript. -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Gives keyboard users a way to skip the navigation. -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Shared website header. -->
+    <header class="site-header">
+        <div class="container header-container">
+
+            <a href="index.html" class="brand">
+                <img
+                    class="brand-mark"
+                    src="assets/Spanish%20Town%20High%20School%20Logo.png"
+                    alt="Spanish Town High School crest">
+
+                <span class="brand-text">
+                    <strong>Spanish Town High School</strong>
+                    <small>School Portal</small>
+                </span>
+            </a>
+
+            <!-- Opens the navigation menu on small screens. -->
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="primary-navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Links to the main website pages. -->
+            <nav class="main-navigation" id="primary-navigation" aria-label="Main navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link active" aria-current="page">About Us</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+                <a href="login.html" class="nav-button">Portal Access</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- About Us page content. -->
+    <main id="main-content">
+
+        <!-- Introduces the school without a banner or card. -->
+        <header class="about-intro">
+            <div class="container">
+                <h1>About Spanish Town High School</h1>
+                <p>
+                    STHS describes itself as “The Oasis of Intelligence.”
+                    The school promotes a lifelong love of learning and
+                    encourages students to aim for excellence.
+                </p>
+            </div>
+        </header>
+
+        <!-- Shows the school's mission and vision one after the other. -->
+        <section class="section-padding about-values-section" aria-label="School mission and vision">
+            <div class="container about-values">
+
+                <article class="about-value">
+                    <h2>Mission</h2>
+                    <p>
+                        The school aims to provide a safe, motivating learning
+                        environment where students and staff can reach their
+                        potential and develop pride, self-worth, responsibility,
+                        and commitment to their families, country and wider community.
+                    </p>
+                </article>
+
+                <article class="about-value">
+                    <h2>Vision</h2>
+                    <p>
+                        STHS seeks to provide high-quality education that builds
+                        worthwhile values and prepares students for society's
+                        changing needs and education transformation goals.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Shows the school address and Contact Us link. -->
+        <section class="about-location-section section-padding" aria-labelledby="location-heading">
+            <div class="container about-location">
+                <div>
+                    <h2 id="location-heading">School Location</h2>
+                    <p>
+                        Corner of Young and Ellis Streets, Spanish Town,
+                        St. Catherine, Jamaica.
+                    </p>
+                </div>
+
+                <a href="contact.html" class="button button-primary">Contact Us</a>
+            </div>
+        </section>
+
+        <!-- Lists the main dates in the school's history. -->
+        <section class="section-padding about-history-section" aria-labelledby="history-heading">
+            <div class="container">
+
+                <div class="section-heading about-section-heading">
+                    <h2 id="history-heading">School History and Milestones</h2>
+                    <p>
+                        The official school history dates STHS to January 1967,
+                        when it opened as a Junior Secondary School under
+                        Principal Lebert Dennis. The school website describes
+                        current enrolment as about 1,300 students, admitted
+                        mainly through the Primary Exit Profile (PEP).
+                    </p>
+                </div>
+
+                <ol class="history-milestones">
+                    <li>
+                        <h3>1974 - Secondary School</h3>
+                        <p>
+                            The school was upgraded to a Secondary School and
+                            introduced the shift system.
+                        </p>
+                    </li>
+
+                    <li>
+                        <h3>1995 - Comprehensive High School</h3>
+                        <p>
+                            STHS became a Comprehensive High School. The school
+                            colours and crest were introduced that year.
+                        </p>
+                    </li>
+
+                    <li>
+                        <h3>2000 - High School Status</h3>
+                        <p>
+                            The school was officially upgraded to High School status.
+                        </p>
+                    </li>
+                </ol>
+
+            </div>
+        </section>
+
+        <!-- Explains the school motto and crest. -->
+        <section class="section-padding" aria-labelledby="motto-heading">
+            <div class="container">
+
+                <div class="section-heading about-section-heading">
+                    <h2 id="motto-heading">School Motto and Crest</h2>
+                </div>
+
+                <div class="motto-copy">
+                    <h3>Aim for Excellence</h3>
+                    <p>
+                        The school history identifies “Aim for Excellence” as
+                        the school motto. It says the crest was introduced in
+                        1995 by past student Errol McGlashing and represents
+                        industrial technology, vocational skills, sports and
+                        academic achievement.
+                    </p>
+                    <p>
+                        The official school colours are maroon, gold and grey.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Lists the academic departments and Sixth Form information. -->
+        <section class="section-padding about-departments-section" aria-labelledby="departments-heading">
+            <div class="container">
+
+                <div class="section-heading about-section-heading">
+                    <h2 id="departments-heading">Academic Departments</h2>
+                    <p>
+                        The official STHS website lists the following academic
+                        departments and learning areas.
+                    </p>
+                </div>
+
+                <div class="department-list">
+                    <article>
+                        <h3>Home Economics</h3>
+                        <p>Culinary arts, fashion design and family studies.</p>
+                    </article>
+
+                    <article>
+                        <h3>Engineering</h3>
+                        <p>Mechanical, electrical and civil engineering with practical learning.</p>
+                    </article>
+
+                    <article>
+                        <h3>Business Education</h3>
+                        <p>Business administration and related business fields.</p>
+                    </article>
+
+                    <article>
+                        <h3>Visual and Performing Arts</h3>
+                        <p>Visual arts, music, drama and dance.</p>
+                    </article>
+
+                    <article>
+                        <h3>Mathematics</h3>
+                        <p>Algebra, geometry, calculus and statistics.</p>
+                    </article>
+
+                    <article>
+                        <h3>Science</h3>
+                        <p>Biology, chemistry, physics and earth sciences.</p>
+                    </article>
+
+                    <article>
+                        <h3>Humanities</h3>
+                        <p>Literature, history, philosophy and languages.</p>
+                    </article>
+
+                    <article>
+                        <h3>Languages</h3>
+                        <p>English, Spanish, French and other languages.</p>
+                    </article>
+
+                    <article>
+                        <h3>Physical Education</h3>
+                        <p>Physical education, sports and wellness.</p>
+                    </article>
+
+                    <article>
+                        <h3>Literacy</h3>
+                        <p>Literacy development and reading instruction.</p>
+                    </article>
+                </div>
+
+                <div class="sixth-form-details">
+                    <h3>Sixth Form</h3>
+                    <p>
+                        The Sixth Form offers a CAPE academic pathway and
+                        technical and vocational programmes, including
+                        Hospitality and Tourism Management and Nail Enhancement.
+                    </p>
+                    <p>
+                        CAPE subjects listed by the school include Agricultural
+                        Science, Biology, Caribbean Studies, Chemistry,
+                        Communication Studies, Entrepreneurship, Environmental
+                        Science, Financial Accounts, Food and Nutrition,
+                        Information Technology, Management of Business, Physics,
+                        Sociology and Tourism. The technical and vocational
+                        options also include City &amp; Guilds and Employability Skills.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Shows department heads with their assigned areas. -->
+        <section class="section-padding" aria-labelledby="staff-heading">
+            <div class="container">
+
+                <div class="section-heading about-section-heading">
+                    <h2 id="staff-heading">Staff Directory</h2>
+                </div>
+
+                <h3 class="directory-subheading">Heads of Department</h3>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Staff Member</th>
+                                <th scope="col">Assigned Subject or Department</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Angela Cephas</td><td>Visual and Performing Arts</td></tr>
+                            <tr><td>Marvalyn Jones</td><td>Mathematics</td></tr>
+                            <tr><td>Mavoiy Burke</td><td>Integrated Science</td></tr>
+                            <tr><td>Nicola Bailey</td><td>Social Studies</td></tr>
+                            <tr><td>Prince Baker</td><td>English Language</td></tr>
+                            <tr><td>Lloy Todd</td><td>Physical Education</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Shared website footer. -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+
+            <div>
+                <h2>Spanish Town High School</h2>
+                <p>School Portal</p>
+                <p class="footer-address">
+                    Corner of Young &amp; Ellis Streets,<br>
+                    Spanish Town P.O., St. Catherine, Jamaica.
+                </p>
+            </div>
+
+            <div>
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>
+                    &copy; <span id="current-year">2026</span>
+                    Spanish Town High School Portal.
+                    CIT2011 Group Project.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

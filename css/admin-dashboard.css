@@ -1,0 +1,277 @@
+/*
+    Institution: University of Technology, Jamaica
+    CIT2011 Web Programming Group Assignment
+    Project: Spanish Town High School Portal
+    Username: admin | Password: admin123
+
+    Group Member Information:
+    Student 1: Obrien Rose | 2509101 | Tuesday 03:00 PM - 05:00 PM
+    Student 2: Soyibo Grant | 2301323 | Tuesday 03:00 PM - 05:00 PM
+    Student 3: Colissa Gentles | 2501993 | Tuesday 03:00 PM - 05:00 PM
+    Student 4: Alex Fairman | 2508755 | Tuesday 03:00 PM - 05:00 PM
+*/
+
+/* Uses the colour variables from style.css. */
+
+.admin-main {
+    padding-block: 32px 60px;
+}
+
+.admin-panel h1 {
+    margin-bottom: 18px;
+    color: var(--primary-dark);
+    font-size: clamp(24px, 4vw, 32px);
+}
+
+.admin-panel[hidden] {
+    display: none;
+}
+
+/* Tab buttons. */
+.admin-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 26px;
+    border-bottom: 3px solid var(--primary-colour);
+}
+
+.admin-tab {
+    padding: 12px 22px;
+    border: 1px solid var(--border-colour);
+    border-bottom: none;
+    border-radius: var(--small-radius) var(--small-radius) 0 0;
+    background: var(--white);
+    color: var(--primary-dark);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.admin-tab:hover {
+    background: var(--primary-light);
+}
+
+.admin-tab.is-active {
+    background: var(--primary-colour);
+    color: var(--white);
+}
+
+/* Cards that hold forms and tables. */
+.admin-card {
+    margin-bottom: 26px;
+    padding: 26px;
+    border: 1px solid var(--border-colour);
+    border-left: 5px solid var(--primary-colour);
+    border-radius: var(--medium-radius);
+    background: var(--white);
+}
+
+.admin-card h2 {
+    color: var(--primary-dark);
+    font-size: 20px;
+}
+
+/* Registry form layout. */
+.admin-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 24px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--primary-dark);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid var(--border-colour);
+    border-radius: var(--small-radius);
+    background: var(--background-colour);
+    font-size: 14px;
+}
+
+/* Marks fields that fail validation after the form is submitted. */
+#student-form.was-validated input:invalid,
+#student-form.was-validated select:invalid {
+    border-color: var(--error-colour);
+    background: #fff3f1;
+}
+
+.admin-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+/* Search and filter row. */
+.admin-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 18px;
+}
+
+.admin-toolbar .form-group {
+    flex: 1 1 220px;
+    margin-top: 0;
+}
+
+.admin-count {
+    margin: 14px 0 10px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Small buttons inside table rows. */
+.row-button {
+    margin-right: 6px;
+    padding: 6px 12px;
+    border: 1px solid var(--primary-colour);
+    border-radius: var(--small-radius);
+    background: var(--white);
+    color: var(--primary-colour);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.row-button:hover {
+    background: var(--primary-light);
+}
+
+.row-button.is-danger {
+    border-color: var(--error-colour);
+    color: var(--error-colour);
+}
+
+/* Grade inputs in the Academic Matrix. */
+.matrix-input {
+    width: 76px;
+    padding: 6px 8px;
+    border: 1px solid var(--border-colour);
+    border-radius: var(--small-radius);
+    text-align: center;
+}
+
+.matrix-input:invalid {
+    border-color: var(--error-colour);
+    background: #fff3f1;
+}
+
+.matrix-average {
+    font-weight: 700;
+}
+
+.empty-row {
+    text-align: center;
+    font-style: italic;
+}
+
+/* Financial ledger totals and forms. */
+.ledger-note {
+    margin-bottom: 18px;
+    color: var(--muted-colour);
+}
+
+.ledger-summary {
+    margin-bottom: 22px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.ledger-summary-card {
+    padding: 18px 20px;
+    border: 1px solid var(--border-colour);
+    border-top: 4px solid var(--accent-colour);
+    border-radius: var(--medium-radius);
+    background: var(--white);
+}
+
+.ledger-summary-card h2 {
+    color: var(--text-colour);
+    font-size: 15px;
+}
+
+.ledger-summary-card p {
+    margin-top: 6px;
+    color: var(--primary-dark);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.ledger-forms {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.ledger-forms .admin-card {
+    margin-bottom: 20px;
+}
+
+.ledger-forms form > .button {
+    margin-top: 18px;
+}
+
+.ledger-forms input,
+.ledger-forms select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid var(--border-colour);
+    border-radius: var(--small-radius);
+    background: var(--background-colour);
+}
+
+.ledger-status {
+    font-weight: 700;
+}
+
+.ledger-status-paid {
+    color: var(--success-colour);
+}
+
+.ledger-status-pending {
+    color: #8a5a00;
+}
+
+.ledger-status-outstanding {
+    color: var(--error-colour);
+}
+
+.ledger-status-not-set {
+    color: var(--muted-colour);
+}
+
+/* Tablet and phone layout. */
+@media (max-width: 680px) {
+    .admin-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ledger-summary,
+    .ledger-forms {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-card {
+        padding: 18px;
+    }
+
+    .admin-tab {
+        flex: 1 1 auto;
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    .header-container .button {
+        padding: 8px 14px;
+    }
+}

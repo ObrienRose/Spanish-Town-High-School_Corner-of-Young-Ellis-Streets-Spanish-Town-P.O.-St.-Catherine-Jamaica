@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--
+        Institution: University of Technology, Jamaica
+        CIT2011 Web Programming Group Assignment
+        Project: Spanish Town High School Portal
+        Username: teacher | Password: teacher123
+
+        Group Member Information:
+        Student 1: Obrien Rose | 2509101 | Tuesday 03:00 PM - 05:00 PM
+        Student 2: Soyibo Grant | 2301323 | Tuesday 03:00 PM - 05:00 PM
+        Student 3: Colissa Gentles | 2501993 | Tuesday 03:00 PM - 05:00 PM
+        Student 4: Alex Fairman | 2508755 | Tuesday 03:00 PM - 05:00 PM
+    -->
+        
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard | Spanish Town High School</title>
+    <link rel="icon" type="image/png" href="assets/Spanish%20Town%20High%20School%20Logo.png">
+
+    <!-- Shared styles first, then the dashboard styles. -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+    <link rel="stylesheet" href="css/teacher-dashboard.css">
+
+    <script src="js/database.js" defer></script>
+    <script src="js/authorization.js" defer></script>
+    <script src="js/teacher.js" defer></script>
+</head>
+<body>
+    <!-- This matches the header used on the administrator dashboard. -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="brand" aria-label="Spanish Town High School homepage">
+                <img
+                    class="brand-mark"
+                    src="assets/Spanish Town High School Logo.png"
+                    alt="Spanish Town High School crest">
+                <span class="brand-text">
+                    <strong>Spanish Town High School</strong>
+                    <small>Teacher Dashboard</small>
+                </span>
+            </a>
+            <button type="button" id="logout-button" class="button button-primary">
+                Log out
+            </button>
+        </div>
+    </header>
+
+    <main class="container admin-main teacher-main">
+        <!-- These tabs switch between the teacher's two tasks. -->
+        <nav class="admin-tabs teacher-tabs" role="tablist" aria-label="Teacher dashboard sections">
+            <button
+                type="button"
+                id="grade-tab"
+                class="admin-tab teacher-tab is-active"
+                role="tab"
+                aria-selected="true"
+                aria-controls="grade-panel"
+                data-tab="grade-panel">
+                Grade Entry
+            </button>
+            <button
+                type="button"
+                id="report-tab"
+                class="admin-tab teacher-tab"
+                role="tab"
+                aria-selected="false"
+                aria-controls="report-panel"
+                data-tab="report-panel">
+                Report Cards
+            </button>
+        </nav>
+
+        <!-- Class totals and grade entry. -->
+        <section
+            id="grade-panel"
+            class="admin-panel teacher-panel"
+            role="tabpanel"
+            aria-labelledby="grade-tab">
+            <h1>Grade Entry</h1>
+
+            <section class="stats" aria-label="Class statistics">
+                <article class="statBox">
+                    <h2>Total Students</h2>
+                    <p id="totalStudents" aria-live="polite">0</p>
+                </article>
+                <article class="statBox">
+                    <h2>Grades Entered</h2>
+                    <p id="totalGrades" aria-live="polite">0</p>
+                </article>
+                <article class="statBox">
+                    <h2>Class Average</h2>
+                    <p id="classAverage" aria-live="polite">0%</p>
+                </article>
+            </section>
+
+            <section class="admin-card teacher-card" aria-labelledby="grade-entry-heading">
+                <h2 id="grade-entry-heading">Enter Student Grades</h2>
+                <p class="teacher-intro">
+                    Select the cohort, grade and subject to load the matching students. Enter assessment scores from 0 to 100.
+                </p>
+
+                <div class="teacher-controls">
+                    <div class="form-group">
+                        <label for="teacherCohortSelect">Step 1: Cohort</label>
+                        <select id="teacherCohortSelect" required>
+                            <option value="">Choose cohort</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacherGradeSelect">Step 2: Grade</label>
+                        <select id="teacherGradeSelect" required disabled>
+                            <option value="">Choose grade</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="subjectSelect">Step 3: Subject</label>
+                        <select id="subjectSelect" required disabled>
+                            <option value="">Choose subject</option>
+                        </select>
+                    </div>
+                    <button
+                        class="button button-primary"
+                        type="button"
+                        id="loadStudentsButton"
+                        disabled>
+                        Load Students
+                    </button>
+                </div>
+
+                <div class="table-wrapper teacher-table-wrapper">
+                    <table class="data-table teacher-table">
+                        <caption>Students and assessment scores</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Student ID</th>
+                                <th scope="col">Student Name</th>
+                                <th scope="col">Assessment Score</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentTable"></tbody>
+                    </table>
+                </div>
+
+                <div class="admin-actions teacher-actions">
+                    <button
+                        class="button button-primary"
+                        type="button"
+                        id="saveGradesButton">
+                        Save Grades
+                    </button>
+                </div>
+            </section>
+        </section>
+
+        <!-- Student report card form and result. -->
+        <section
+            id="report-panel"
+            class="admin-panel teacher-panel"
+            role="tabpanel"
+            aria-labelledby="report-tab"
+            hidden>
+            <h1>Report Cards</h1>
+
+            <section class="admin-card teacher-card" aria-labelledby="report-heading">
+                <h2 id="report-heading">Generate a Report Card</h2>
+                <p class="teacher-intro">
+                    Enter a student ID to view that student's saved grades.
+                </p>
+
+                <div class="teacher-report-controls">
+                    <div class="form-group">
+                        <label for="reportStudentID">Student ID</label>
+                        <input
+                            type="text"
+                            id="reportStudentID"
+                            autocomplete="off"
+                            placeholder="Enter student ID">
+                    </div>
+                    <button
+                        class="button button-primary"
+                        type="button"
+                        id="generateReportButton">
+                        Generate Report
+                    </button>
+                </div>
+
+                <div id="reportCard" class="teacher-report-output" aria-live="polite">
+                    <p class="report-placeholder">Your report card will appear here.</p>
+                </div>
+            </section>
+        </section>
+
+        <p id="teacherMessage" class="teacher-message" role="status" aria-live="polite"></p>
+    </main>
+</body>
+</html>

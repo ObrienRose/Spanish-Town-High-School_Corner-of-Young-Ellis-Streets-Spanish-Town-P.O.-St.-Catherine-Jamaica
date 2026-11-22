@@ -1,0 +1,160 @@
+/*
+    Institution: University of Technology, Jamaica
+    CIT2011 Web Programming Group Assignment
+    Project: Spanish Town High School Portal
+
+    Group Member Information:
+    Student 1: Obrien Rose | 2509101 | Tuesday 03:00 PM - 05:00 PM
+    Student 2: Soyibo Grant | 2301323 | Tuesday 03:00 PM - 05:00 PM
+    Student 3: Colissa Gentles | 2501993 | Tuesday 03:00 PM - 05:00 PM
+    Student 4: Alex Fairman | 2508755 | Tuesday 03:00 PM - 05:00 PM
+*/
+
+/* This centers the login card on the page. */
+.login-page {
+    min-height: 100vh;
+    padding: 32px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--primary-dark);
+}
+
+/* This keeps the login content from getting too wide. */
+.login-container {
+    width: min(100%, 440px);
+}
+
+/* This styles the link back to the homepage. */
+.login-home-link {
+    margin-bottom: 16px;
+    display: inline-block;
+    color: var(--accent-colour);
+    text-decoration: underline;
+    width: 100%;
+    text-align: center;
+}
+
+/* This gives the login form a white background and gold top line. */
+.login-box {
+    padding: clamp(24px, 6vw, 40px);
+    border-top: 5px solid var(--accent-colour);
+    border-radius: var(--medium-radius);
+    background: var(--white);
+    box-shadow: var(--shadow);
+}
+
+/* This lines up the crest and school name. */
+.login-brand {
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--primary-dark);
+    font-size: 15px;
+    font-weight: 700;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--accent-colour);  
+}
+
+/* This sizes the crest above the form. */
+.login-brand img {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+}
+
+/* This styles the login heading. */
+.login-box h1 {
+    margin-bottom: 6px;
+    color: var(--primary-dark);
+    font-size: 30px;
+}
+
+/* This styles the short instruction below the heading. */
+.login-description {
+    margin-bottom: 24px;
+    color: var(--text-colour);
+}
+
+/* This adds space between the login fields. */
+.login-field {
+    margin-top: 18px;
+}
+
+/* This places each field label above its input. */
+.login-field label {
+    margin-bottom: 7px;
+    display: block;
+    color: var(--primary-dark);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* This styles the username and password inputs. */
+.login-field input {
+    width: 100%;
+    min-height: 46px;
+    padding: 11px 12px;
+    border: 1px solid var(--border-colour);
+    border-radius: var(--small-radius);
+    background: var(--background-colour);
+    color: var(--text-colour);
+}
+
+/* This puts the Show button inside the password field. */
+.password-input-wrap {
+    position: relative;
+}
+
+.password-input-wrap input {
+    padding-right: 76px;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    padding: 5px 7px;
+    transform: translateY(-50%);
+    border: 0;
+    background: transparent;
+    color: var(--primary-colour);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.password-toggle:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+/* This adds a visible focus style to the login inputs. */
+.login-field input:focus-visible {
+    border-color: var(--primary-colour);
+    outline: 3px solid var(--primary-light);
+    outline-offset: 2px;
+}
+
+/* This makes the login button fill the card width. */
+.login-submit {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 24px;
+}
+
+/* This gives the login error message room to appear. */
+.login-error {
+    min-height: 1.5em;
+    margin-top: 12px;
+    color: var(--error-colour);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* This reduces the card spacing on narrow screens. */
+@media (max-width: 480px) {
+    .login-box {
+        padding: 24px 20px;
+    }
+}

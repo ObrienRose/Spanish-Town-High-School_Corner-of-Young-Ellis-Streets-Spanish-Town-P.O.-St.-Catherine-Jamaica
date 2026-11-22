@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--
+        Institution: University of Technology, Jamaica
+        CIT2011 Web Programming Group Assignment
+        Project: Spanish Town High School Portal
+        Username: admin | Password: admin123
+
+        Group Member Information:
+        Student 1: Obrien Rose | 2509101 | Tuesday 03:00 PM - 05:00 PM
+        Student 2: Soyibo Grant | 2301323 | Tuesday 03:00 PM - 05:00 PM
+        Student 3: Colissa Gentles | 2501993 | Tuesday 03:00 PM - 05:00 PM
+        Student 4: Alex Fairman | 2508755 | Tuesday 03:00 PM - 05:00 PM
+    -->
+        
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrator Dashboard | Spanish Town High School</title>
+    <link rel="icon" type="image/png" href="assets/Spanish%20Town%20High%20School%20Logo.png">
+
+    <!-- Shared styles first, then the dashboard styles. -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+</head>
+
+<body>
+
+    <!-- Dashboard header with logo and logout button. -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="brand" aria-label="Spanish Town High School homepage">
+                <img class="brand-mark" src="assets/Spanish Town High School Logo.png" alt="Spanish Town High School crest">
+                <span class="brand-text">
+                    <strong>Spanish Town High School</strong>
+                    <small>Administrator Dashboard</small>
+                </span>
+            </a>
+            <button type="button" id="logout-button" class="button button-primary">Log out</button>
+        </div>
+    </header>
+
+    <main class="container admin-main">
+
+        <!-- Tab buttons switch between the three dashboard modules. -->
+        <nav class="admin-tabs" aria-label="Dashboard sections">
+            <button type="button" class="admin-tab is-active" data-tab="registry-panel" aria-selected="true">Student Registry</button>
+            <button type="button" class="admin-tab" data-tab="matrix-panel" aria-selected="false">Academic Matrix</button>
+            <button type="button" class="admin-tab" data-tab="ledger-panel" aria-selected="false">Financial Ledger</button>
+        </nav>
+
+        <!-- STUDENT REGISTRY -->
+        <section id="registry-panel" class="admin-panel">
+            <h1>Student Registry</h1>
+
+            <form id="student-form" class="admin-card" novalidate>
+                <h2 id="student-form-title">Register a student</h2>
+
+                <div class="admin-form-grid">
+                    <div class="form-group">
+                        <label for="first-name">First name</label>
+                        <input type="text" id="first-name" autocomplete="given-name" required minlength="2" maxlength="40"
+                               pattern="[\p{L}][\p{L} .\x27\x2D]{1,39}"
+                               title="Letters only, at least 2 characters.">
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last name</label>
+                        <input type="text" id="last-name" autocomplete="family-name" required minlength="2" maxlength="40"
+                               pattern="[\p{L}][\p{L} .\x27\x2D]{1,39}"
+                               title="Letters only, at least 2 characters.">
+                    </div>
+                    <div class="form-group">
+                        <label for="date-of-birth">Date of birth</label>
+                        <input type="date" id="date-of-birth" autocomplete="bday" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" autocomplete="sex" required>
+                            <option value="">Select gender</option>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="grade-level">Grade level</label>
+                        <select id="grade-level" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="semester">Enrolment semester</label>
+                        <select id="semester" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="guardian-name">Guardian name</label>
+                        <input type="text" id="guardian-name" autocomplete="name" required minlength="3" maxlength="80">
+                    </div>
+                    <div class="form-group">
+                        <label for="guardian-phone">Guardian phone</label>
+                        <input type="tel" id="guardian-phone" autocomplete="tel" required placeholder="876-555-0123"
+                               pattern="[0-9+\x28\x29 \x2D]{7,15}"
+                               title="7 to 15 digits. You may use + ( ) and -.">
+                    </div>
+                </div>
+
+                <div class="admin-actions">
+                    <button type="submit" id="student-save-button" class="button button-primary">Register student</button>
+                    <button type="button" id="student-cancel-button" class="button button-outline" hidden>Cancel edit</button>
+                </div>
+                <p id="student-feedback" class="form-feedback" role="status" aria-live="polite"></p>
+            </form>
+
+            <div class="admin-card">
+                <div class="admin-toolbar">
+                    <div class="form-group">
+                        <label for="student-search">Search students</label>
+                        <input type="search" id="student-search" autocomplete="off" placeholder="Name or student ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="filter-semester">Cohort</label>
+                        <select id="filter-semester"></select>
+                    </div>
+                </div>
+                <p id="student-count" class="admin-count"></p>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Grade</th>
+                                <th scope="col">Cohort</th>
+                                <th scope="col">Guardian</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="student-table-body"></tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+
+        <!-- ACADEMIC MATRIX -->
+        <section id="matrix-panel" class="admin-panel" hidden>
+            <h1>Academic Matrix</h1>
+            <div class="admin-card">
+                <div class="admin-toolbar">
+                    <div class="form-group">
+                        <label for="matrix-semester">Cohort</label>
+                        <select id="matrix-semester"></select>
+                    </div>
+                    <button type="button" id="matrix-save-button" class="button button-primary">Save grades</button>
+                </div>
+                <p id="matrix-feedback" class="form-feedback" role="status" aria-live="polite"></p>
+
+                <div class="table-wrapper">
+                    <table class="data-table" id="matrix-table"></table>
+                </div>
+            </section>
+        </section>
+
+        <!-- FINANCIAL LEDGER -->
+        <section id="ledger-panel" class="admin-panel" hidden>
+            <h1>Financial Ledger</h1>
+            <p class="ledger-note">Enter tuition amounts from the school's current fee schedule. The portal does not set or assume fee amounts.</p>
+
+            <section class="ledger-summary" aria-label="Ledger totals">
+                <article class="ledger-summary-card">
+                    <h2>Total tuition</h2>
+                    <p id="ledger-total-tuition">J$0.00</p>
+                </article>
+                <article class="ledger-summary-card">
+                    <h2>Payments received</h2>
+                    <p id="ledger-total-paid">J$0.00</p>
+                </article>
+                <article class="ledger-summary-card">
+                    <h2>Outstanding balance</h2>
+                    <p id="ledger-total-balance">J$0.00</p>
+                </article>
+            </section>
+
+            <div class="ledger-forms">
+                <form class="admin-card" id="tuition-form">
+                    <h2>Set student tuition</h2>
+                    <p>Use the verified amount for this student's cohort.</p>
+                    <div class="form-group">
+                        <label for="tuition-student">Student</label>
+                        <select id="tuition-student" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tuition-amount">Tuition amount (J$)</label>
+                        <input type="number" id="tuition-amount" autocomplete="off" min="0.01" step="0.01" required>
+                    </div>
+                    <button class="button button-primary" type="submit">Save tuition</button>
+                    <p id="tuition-feedback" class="form-feedback" role="status" aria-live="polite"></p>
+                </form>
+
+                <form class="admin-card" id="payment-form">
+                    <h2>Record a payment</h2>
+                    <div class="form-group">
+                        <label for="payment-student">Student</label>
+                        <select id="payment-student" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="payment-amount">Payment amount (J$)</label>
+                        <input type="number" id="payment-amount" autocomplete="off" min="0.01" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="payment-date">Payment date</label>
+                        <input type="date" id="payment-date" autocomplete="off" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="payment-reference">Receipt or reference (optional)</label>
+                        <input type="text" id="payment-reference" autocomplete="off" maxlength="60">
+                    </div>
+                    <button class="button button-primary" type="submit">Save payment</button>
+                    <p id="payment-feedback" class="form-feedback" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+
+            <section class="admin-card" id="ledger-container" aria-labelledby="student-balances-heading">
+                <h2 id="student-balances-heading">Student balances</h2>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Student</th>
+                                <th scope="col">Grade and cohort</th>
+                                <th scope="col">Tuition</th>
+                                <th scope="col">Paid</th>
+                                <th scope="col">Balance</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ledger-table-body"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="admin-card" aria-labelledby="transactions-heading">
+                <h2 id="transactions-heading">Payment transactions</h2>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Student</th>
+                                <th scope="col">Receipt or reference</th>
+                                <th scope="col">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transaction-table-body"></tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+
+    </main>
+
+    <!-- The role check and logout files first, then this page's java script. -->
+    <script src="js/database.js"></script>
+    <script src="js/authorization.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--
+        Institution: University of Technology, Jamaica
+        CIT2011 Web Programming Group Assignment
+        Project: Spanish Town High School Portal
+        Username: viewer | Password: viewer123
+
+        Group Member Information:
+        Student 1: Obrien Rose | 2509101 | Tuesday 03:00 PM - 05:00 PM
+        Student 2: Soyibo Grant | 2301323 | Tuesday 03:00 PM - 05:00 PM
+        Student 3: Colissa Gentles | 2501993 | Tuesday 03:00 PM - 05:00 PM
+        Student 4: Alex Fairman | 2508755 | Tuesday 03:00 PM - 05:00 PM
+    -->
+
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="Authorized read-only access to school records.">
+
+    <title>School Portal - Viewer Dashboard</title>
+
+    <link rel="icon" type="image/png" href="assets/Spanish%20Town%20High%20School%20Logo.png">
+    <link rel="stylesheet" href="css/viewer-dashboard.css">
+
+</head>
+
+ <body>
+
+    <header class="header">
+        <div> 
+            <h1> School Portal </h1>
+            <p>General Authorized User Dashboard</p>
+        </div>
+
+        <button type="button" onclick="logoutUser()">Log out</button>
+    </header>    
+
+        <main class="dashboard">
+
+            <section class="welcome-section">
+
+                <h2>Read-only Information Viewer</h2>
+
+                <p>
+                    Search and view student profiles, academic records, and financial statements.
+                </p>
+
+                <p class="notice">
+                    Viewing access only. Records cannot be modified.
+                </p>
+            </section>
+
+            <!--The universal search matrix-->
+
+            <section class="search-section">
+
+                <h2>Universal Search Matrix</h2>
+
+                <div class="search-control">
+                        
+                    <input
+                        type="search"
+                        id="searchInput"
+                        name="search"
+                        aria-label="Search by student name or ID"
+                        autocomplete="off"
+                        placeholder="Search by student name or ID..."
+                    >
+
+                    <label for="categoryFilter">Record type</label>
+                        
+                    <select id="categoryFilter">
+
+                        <option value="all">All Records</option>
+                         <option value="students">Student Profiles</option>
+                        <option value="grades">Academic Records</option>
+                         <option value="payments">Financial Records</option>
+                    </select>
+
+                    <button type="button" id="searchButton">Search</button>
+                 </div>
+            </section>
+
+            <!--student profiles-->
+            <section class="data-section">
+
+                 <h2>Student Profiles</h2>
+
+                <div id="studentRecords" class="record-container">
+
+                </div>
+
+            </section>
+
+             <!--academic records-->
+            <section class="data-section">
+
+                <h2>Academic Records</h2>
+
+                <div id="gradeRecords" class="record-container">
+
+                </div>
+            </section>
+
+             <!--financial statements-->
+            <section class="data-section">
+
+                 <h2>Financial Statements</h2>
+
+                <div id="paymentRecords" class="record-container">
+
+                </div>
+
+            </section>
+
+            <!--reporting platform-->
+             <section class="data-section">
+
+                <h2>Reporting Platform</h2>
+
+                 <label for="reportFilter">Filter report:</label>
+
+                <select id="reportFilter">
+
+                    <option value="all">All Students</option>
+
+                    <option value="paid">Paid Students</option>
+
+                    <option value="pending">Pending Payments</option>
+
+                    <option value="outstanding">Outstanding Payments</option>
+
+                </select>
+
+                <button type="button" id="generateReport">
+                    Generate Report
+                </button>
+
+                <div id="reportOutput" class="report-output" aria-live="polite">
+
+                    <p>Select a filter to generate a report</p>
+
+                </div>
+            </section>
+        </main>
+
+        <footer>
+
+            <p>School Portal | Authorized Viewing Access Only</p>
+
+        </footer>
+
+        <script src="js/database.js"></script>
+        <script src="js/authorization.js"></script>
+        <script src="js/viewer.js"></script>
+</body>
+</html>

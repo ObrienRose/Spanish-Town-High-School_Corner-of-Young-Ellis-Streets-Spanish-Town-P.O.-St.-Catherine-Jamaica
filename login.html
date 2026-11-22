@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <!--
+        Institution: University of Technology, Jamaica
+        CIT2011 Web Programming Group Assignment
+        Project: Spanish Town High School Portal
+
+        Group Member Information:
+        Student 1: Obrien Rose | 2509101 | Tuesday 03:00 PM - 05:00 PM
+        Student 2: Soyibo Grant | 2301323 | Tuesday 03:00 PM - 05:00 PM
+        Student 3: Colissa Gentles | 2501993 | Tuesday 03:00 PM - 05:00 PM
+        Student 4: Alex Fairman | 2508755 | Tuesday 03:00 PM - 05:00 PM
+    -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Log in to the Spanish Town High School Portal.">
+
+    <title>Log In | Spanish Town High School</title>
+
+    <link rel="icon" type="image/png" href="assets/Spanish%20Town%20High%20School%20Logo.png">
+
+    <!-- Loads the shared portal styles, then the login page styles. -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+
+    <!-- Loads the database before the login code. -->
+    <script src="js/database.js" defer></script>
+    <script src="js/authorization.js" defer></script>
+</head>
+
+<body class="login-page">
+
+    <a class="skip-link" href="#login-heading">Skip to login form</a>
+
+    <main class="login-container">
+
+        <section class="login-box" aria-labelledby="login-heading">
+
+            <a class="login-brand" href="index.html">
+                <img
+                    src="assets/Spanish%20Town%20High%20School%20Logo.png"
+                    alt="">
+
+                <span>Spanish Town High School</span>
+            </a>
+
+            <h1 id="login-heading">School Portal</h1>
+            <p class="login-description">Please log in to access your account.</p>
+
+            <form id="loginForm">
+                <div class="login-field">
+                    <label for="username">Username</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Enter your username"
+                        autocomplete="username"
+                        required>
+                </div>
+
+                <div class="login-field">
+                    <label for="password">Password</label>
+                    <div class="password-input-wrap">
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required>
+                        <button
+                            class="password-toggle"
+                            type="button"
+                            id="togglePassword"
+                            aria-controls="password"
+                            aria-label="Show password"
+                            aria-pressed="false">Show</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="button button-primary login-submit">
+                    Log In
+                </button>
+
+                <p id="errorMessage" class="login-error" role="alert"></p>
+            </form>
+        
+            <a class="login-home-link" href="index.html">Back to Home</a>
+
+        </section>
+    </main>
+</body>
+</html>
